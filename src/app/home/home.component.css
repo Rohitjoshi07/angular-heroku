@@ -1,0 +1,14 @@
+.bank-text,
+.bank-img {
+  margin: 65px 0;
+}
+
+.back {
+  /* margin-top: 60px; */
+  background-color: rgb(226, 246, 252);
+}
+
+.head-card {
+  padding: 30px;
+  text-align: center;
+}
