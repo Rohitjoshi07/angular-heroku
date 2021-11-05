@@ -29,6 +29,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CardComponent } from './card/card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { CardComponent } from './card/card.component';
     FormsModule,
     MatExpansionModule,
     CdkAccordionModule,
+    HttpClientModule
     // FlexLayoutModule
 
   ],
