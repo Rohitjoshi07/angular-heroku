@@ -8,14 +8,9 @@ import { User } from '../user';
 })
 export class RegisterComponent implements OnInit {
 
-  // u = {
-  //   email: "",
-  //   name: "",
-  //   password: ""
-  // }
   user = new User("", "", "");
 
-  // m: any
+  msg = '';
 
 
   constructor(private service: UserServiceService) {
@@ -25,15 +20,23 @@ export class RegisterComponent implements OnInit {
   }
 
   public registerNow() {
-    console.log(this.user);
+    // console.log(this.user);
+    if ((this.user.email != '' && this.user.name != '' && this.user.password != '') && this.user.email != null && this.user.name != null && this.user.password != null) {
+      this.service.doRegistration(this.user).subscribe(
+        data => {
+          console.log("Response Received", data)
+          this.msg = "Registration Done Successfully"
+        },
+        error => {
+          console.log("Exception Occured")
+          this.msg = "Bad Request Try Again !!"
+        }
+      )
+    }
 
-    this.service.doRegistration(this.user).subscribe(
-      data => console.log("Response Received", data),
-      error => console.log("Exception Occured")
-    )
-
-
-
+    else {
+      this.msg = "All fields are mandatory...";
+    }
   }
 
 }

@@ -5,6 +5,7 @@
       <mat-tab label="Sign Up">
         <mat-card-content>
           <form (ngSubmit)="registerNow()">
+            <small class="text-success ml-5" >{{msg}}</small>
             <mat-form-field>
               <input
                 matInput
@@ -64,6 +65,7 @@
                 required
                 minlength="6"
                 name="repassword"
+                ngModel="user.repassword"
                 ngModel
                 #repassword="ngModel">
                 <mat-error

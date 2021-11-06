@@ -4,13 +4,15 @@
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
         <mat-tab label="Login">
             <mat-card-content>
-              <form>
+              <form (ngSubmit)="loginNow()">
+                <small class="text-success ml-5">{{msg}}</small>
                 <mat-form-field>
                   <input
                     matInput
                     placeholder="Email"
                     required
                     name="email"
+                    [(ngModel)]="user1.email"
                     ngModel
                     #email="ngModel">
                     <mat-error *ngIf="email.invalid">Email is required</mat-error>
@@ -24,16 +26,17 @@
                     required
                     minlength="6"
                     name="password"
+                    [(ngModel)]="user1.password"
                     ngModel
                     #password="ngModel">
                     <mat-error
                       *ngIf="password.errors && password.errors.required">
                       Password is required
                     </mat-error>
-                    <mat-error
+                    <!-- <mat-error
                       *ngIf="password.errors && password.errors.minlength">
                       Password must be of length 6
-                    </mat-error>
+                    </mat-error> -->
                   <!-- <mat-icon matSuffix>lock</mat-icon> -->
                 </mat-form-field>
                 <!-- <mat-checkbox>Remember Me!</mat-checkbox> -->
@@ -41,17 +44,17 @@
                   mat-raised-button
                   color="primary"
                   class="login-button"
-                  routerLink="/dashboard">
+                  type="submit">
                   Login
                 </button>
   
-                <button
+                <!-- <button
                   mat-raised-button
                   color="accent"
                   class="login-button">
                   Login with Google
-                </button>
-                <p class="login-button">Do not have account  ! please  <a routerLink="register" >Register</a></p>
+                </button> -->
+                <p class="login-button">Do not have account  ! please  <a routerLink="/register" >Register</a></p>
               </form>
             </mat-card-content>
         </mat-tab>
