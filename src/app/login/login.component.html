@@ -11,12 +11,15 @@
                     matInput
                     placeholder="Email"
                     required
+                    type="email"
+                    email
                     name="email"
                     [(ngModel)]="user1.email"
                     ngModel
                     #email="ngModel">
-                    <mat-error *ngIf="email.invalid">Email is required</mat-error>
-                  <!-- <mat-icon matSuffix>email</mat-icon> -->
+                    <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="email.errors?.email">Email is Invalid</mat-error>
+                  
                 </mat-form-field>
                 <mat-form-field>
                   <input
@@ -24,22 +27,15 @@
                     placeholder="Password"
                     type="password"
                     required
-                    minlength="6"
                     name="password"
                     [(ngModel)]="user1.password"
                     ngModel
                     #password="ngModel">
                     <mat-error
-                      *ngIf="password.errors && password.errors.required">
+                      *ngIf="password.errors?.required">
                       Password is required
                     </mat-error>
-                    <!-- <mat-error
-                      *ngIf="password.errors && password.errors.minlength">
-                      Password must be of length 6
-                    </mat-error> -->
-                  <!-- <mat-icon matSuffix>lock</mat-icon> -->
                 </mat-form-field>
-                <!-- <mat-checkbox>Remember Me!</mat-checkbox> -->
                 <button
                   mat-raised-button
                   color="primary"
@@ -47,13 +43,6 @@
                   type="submit">
                   Login
                 </button>
-  
-                <!-- <button
-                  mat-raised-button
-                  color="accent"
-                  class="login-button">
-                  Login with Google
-                </button> -->
                 <p class="login-button">Do not have account  ! please  <a routerLink="/register" >Register</a></p>
               </form>
             </mat-card-content>

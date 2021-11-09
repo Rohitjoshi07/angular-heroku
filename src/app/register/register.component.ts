@@ -20,18 +20,39 @@ export class RegisterComponent implements OnInit {
   }
 
   public registerNow() {
-    // console.log(this.user);
     if ((this.user.email != '' && this.user.name != '' && this.user.password != '') && this.user.email != null && this.user.name != null && this.user.password != null) {
-      this.service.doRegistration(this.user).subscribe(
+      this.service.checkUserExist(this.user).subscribe(
         data => {
-          console.log("Response Received", data)
-          this.msg = "Registration Done Successfully"
-        },
-        error => {
-          console.log("Exception Occured")
-          this.msg = "Bad Request Try Again !!"
+          if (data.status == "ok") {
+            this.service.doRegistration(this.user).subscribe(
+              data => {
+                console.log("Response Received", data)
+                this.msg = "Registration Done Successfully";
+              }
+            )
+          }
+          else {
+            this.msg = "User Already Exist. Please Login";
+          }
         }
       )
+
+      // this.service.doRegistration(this.user).subscribe(
+      //   data => {
+      //     console.log("Response Received", data)
+      //     if (data.status == "Bad-Request") {
+      //       this.msg = "User Already Exist. Please Login";
+      //     }
+      //     else {
+      //       this.msg = "Registration Done Successfully";
+      //     }
+
+      //   },
+      //   error => {
+      //     console.log("Exception Occured")
+      //     this.msg = "Bad Request Try Again !!"
+      //   }
+      // )
     }
 
     else {
