@@ -4,7 +4,7 @@
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
         <mat-tab label="Login">
             <mat-card-content>
-              <form (ngSubmit)="loginNow()">
+              <form #userForm="ngForm" (ngSubmit)="userForm.value">
                 <small class="text-success ml-5">{{msg}}</small>
                 <mat-form-field>
                   <input
@@ -37,10 +37,12 @@
                     </mat-error>
                 </mat-form-field>
                 <button
+                [disabled]="userForm.invalid"
                   mat-raised-button
                   color="primary"
                   class="login-button"
-                  type="submit">
+                  type="submit"
+                  (click)="loginNow()">
                   Login
                 </button>
                 <p class="login-button">Do not have account  ! please  <a routerLink="/register" >Register</a></p>
