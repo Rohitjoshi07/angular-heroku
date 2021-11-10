@@ -31,7 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ConfirmEqualValidator } from "./confirm-equal-validator";
+// import { ConfirmEqualValidator } from "./confirm-equal-validator";
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { ConfirmEqualValidator } from "./confirm-equal-validator";
     FooterComponent,
     HomeComponent,
     CardComponent,
-    ConfirmEqualValidator
+    // ConfirmEqualValidator
   ],
   imports: [
     BrowserModule,

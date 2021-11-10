@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   msg = '';
 
 
-  constructor(private service: UserServiceService) {
+  constructor(private service: UserServiceService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -28,6 +29,8 @@ export class RegisterComponent implements OnInit {
               data => {
                 console.log("Response Received", data)
                 this.msg = "Registration Done Successfully";
+                alert("...Your Registration Done Successfully.Please Login...");
+                this.router.navigate(['/'])
               }
             )
           }

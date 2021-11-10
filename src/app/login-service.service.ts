@@ -14,10 +14,6 @@ export class LoginServiceService {
     return this._http.post<any>("https://global-rest-api.herokuapp.com/userAuth/login", user);
   }
 
-  isLogin() {
-    return true;
-  }
-
 }
 
 
