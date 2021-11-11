@@ -56,7 +56,7 @@
                 </mat-error>
                 <mat-error
                   *ngIf="password.errors?.minlength">
-                  Password must be of length 6
+                  Password must contain atleast 6 characters
                 </mat-error>
               
 
@@ -98,7 +98,7 @@
               Sign Up
             </button>
             <!-- <p>{{user | json }}</p> -->
-            <p class="login-button">Do you have account  ! please  <a routerLink="/login" >Login</a></p>
+            <p class="login-button">Already have account! please <a routerLink="/login" >Login</a></p>
           </form>
         </mat-card-content>
       </mat-tab>
