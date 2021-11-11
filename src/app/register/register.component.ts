@@ -29,8 +29,8 @@ export class RegisterComponent implements OnInit {
               data => {
                 console.log("Response Received", data)
                 this.msg = "Registration Done Successfully";
-                alert("...Your Registration Done Successfully.Please Login...");
-                this.router.navigate(['/'])
+                alert("...Your Registration Done Successfully...");
+                this.router.navigate(['/dashboard'])
               }
             )
           }
