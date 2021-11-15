@@ -11,16 +11,16 @@
                 matInput
                 placeholder="Email"
                 required
-                name="email"
+                name="username"
                 email
-                [(ngModel)]="user.email"
+                [(ngModel)]="user.username"
                 ngModel
                 #email="ngModel">
                 <mat-error *ngIf="email.errors?.required && email.touched">Email is required</mat-error>
                 <mat-error *ngIf="email.errors?.email && email.touched">Email is invalid</mat-error>
               
             </mat-form-field>
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input
                 matInput
                 placeholder="User Name"
@@ -35,7 +35,7 @@
                 Username is required
               </mat-error>
 
-            </mat-form-field>
+            </mat-form-field> -->
             
             <div ngModelGroup="passwordGroup" mat-error="repassword.touched && !repassword.errors?.required && repassword.invalid"> 
             <mat-form-field>

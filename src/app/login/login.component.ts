@@ -21,25 +21,36 @@ export class LoginComponent implements OnInit {
 
   public loginNow() {
     // console.log(this.user);
-    if ((this.user1.email != '' && this.user1.password != '') && this.user1.email != null && this.user1.password != null) {
-      this.service.doLogin(this.user1).subscribe(
-        data => {
-          console.log("Response Received", data)
-          if (data.status == "ok") {
-            this.msg = "Login Success"
-            this.router.navigate(['/dashboard']);
-          }
-          else {
-            this.msg = "Invalid Credientials, Please Login Again";
-            this.router.navigate(['/login']);
-          }
-
+    if ((this.user1.username != '' && this.user1.password != '') && this.user1.username != null && this.user1.password != null) {
+      this.service.generateToken(this.user1).subscribe(
+        (data: any) => {
+          console.log(data.token);
+          this.service.loginUser(data.token);
+          window.location.href = "/dashboard"
         },
         error => {
-          console.log("Exception Occured")
-          this.msg = "Invalid Credientials, Please Login Again"
+          this.msg = "Invalid Credientials, Please Login Again";
+          this.router.navigate(['/login']);
         }
       )
+      // this.service.doLogin(this.user1).subscribe(
+      //   data => {
+      //     console.log("Response Received", data)
+      //     if (data.status == "ok") {
+      //       this.msg = "Login Success"
+      //       this.router.navigate(['/dashboard']);
+      //     }
+      //     else {
+      //       this.msg = "Invalid Credientials, Please Login Again";
+      //       this.router.navigate(['/login']);
+      //     }
+
+      //   },
+      //   error => {
+      //     console.log("Exception Occured")
+      //     this.msg = "Invalid Credientials, Please Login Again"
+      //   }
+      // )
     }
     else {
       this.msg = "All fields are mandatory..."

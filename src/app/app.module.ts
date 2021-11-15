@@ -24,12 +24,13 @@ import {
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ApplyFormComponent } from './apply-form/apply-form.component';
 
 // import { ConfirmEqualValidator } from "./confirm-equal-validator";
 
@@ -42,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HomeComponent,
     CardComponent,
+    ApplyFormComponent,
     // ConfirmEqualValidator
   ],
   imports: [
@@ -60,7 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatExpansionModule,
     CdkAccordionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
     // FlexLayoutModule
 
   ],

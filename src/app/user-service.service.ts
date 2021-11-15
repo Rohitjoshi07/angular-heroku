@@ -11,12 +11,11 @@ export class UserServiceService {
   constructor(private http: HttpClient) { }
 
   public checkUserExist(user: User): Observable<any> {
-    return this.http.post<any>("https://global-rest-api.herokuapp.com/userAuth/check", user);
-
+    console.log(user);
+    return this.http.post<any>("https://global-rest-api.herokuapp.com/check", user);
   }
   public doRegistration(user: User): Observable<any> {
-    console.log(user);
-    return this.http.post<any>("https://global-rest-api.herokuapp.com/userAuth/register", user);
-  }
 
+    return this.http.post<any>("https://global-rest-api.herokuapp.com/register", user);
+  }
 }

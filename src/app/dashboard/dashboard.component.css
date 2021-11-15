@@ -1,1 +1,13 @@
+.card {
+  margin: 10px 0;
+  padding: auto;
+}
 
+.head {
+  margin-top: 80px;
+}
+
+.heading {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: auto 0px;
+}

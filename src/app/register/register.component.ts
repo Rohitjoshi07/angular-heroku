@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  user = new User("", "", "");
+  user = new User("", "");
 
   msg = '';
 
@@ -21,9 +21,10 @@ export class RegisterComponent implements OnInit {
   }
 
   public registerNow() {
-    if ((this.user.email != '' && this.user.name != '' && this.user.password != '') && this.user.email != null && this.user.name != null && this.user.password != null) {
+    if ((this.user.username != '' && this.user.password != '') && this.user.username != null && this.user.password != null) {
       this.service.checkUserExist(this.user).subscribe(
         data => {
+          console.log(data);
           if (data.status == "ok") {
             this.service.doRegistration(this.user).subscribe(
               data => {

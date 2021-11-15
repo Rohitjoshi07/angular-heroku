@@ -1,0 +1,187 @@
+<div class="container-fluid credit-page">
+    <mat-card class="mat-elevation-z12">
+      <mat-card-title style="text-align:center;">Credit Card Application Form</mat-card-title>
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab label="Credit Card">
+          <mat-card-content>
+            <form #userForm="ngForm" (ngSubmit)="userForm.value">
+              <small class="text-success ml-5" >{{msg}}</small>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="User Name"
+                  required
+                  name="name"
+                  [(ngModel)]="user.name"
+                  ngModel
+                  #name="ngModel">
+                
+                <mat-error
+                  *ngIf="name.invalid">
+                  Username is required
+                </mat-error>
+  
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  required
+                  name="email"
+                  email
+                  [(ngModel)]="user.email"
+                  ngModel
+                  #email="ngModel">
+                  <mat-error *ngIf="email.errors?.required && email.touched">Email is required</mat-error>
+                  <mat-error *ngIf="email.errors?.email && email.touched">Email is invalid</mat-error>
+              </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="Date of Birth"
+                    required
+                    name="dob"
+                    type="date"
+                    [(ngModel)]="user.dob"
+                    ngModel
+                    #dob="ngModel">
+                    
+                    <mat-error
+                    *ngIf="dob.invalid">
+                    Date of Birth is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="Mobile Number"
+                    required
+                    name="mobileNumber"
+                    type="text"
+                    maxlength="10"
+                    [(ngModel)]="user.mobileNumber"
+                    ngModel
+                    #mobileNumber="ngModel">
+                    
+                    <mat-error
+                    *ngIf="mobileNumber.invalid">
+                    Mobile Number is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="PAN Number"
+                    required
+                    name="panNumber"
+                    type="text"
+                    maxlength="10"
+                    [(ngModel)]="user.panNumber"
+                    ngModel
+                    #panNumber="ngModel">
+                    
+                    <mat-error
+                    *ngIf="panNumber.invalid">
+                    PAN Number is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="Aadhar Number"
+                    required
+                    name="aadharNumber"
+                    type="text"
+                    maxlength="12"
+                    [(ngModel)]="user.aadharNumber"
+                    ngModel
+                    #aadharNumber="ngModel">
+                    
+                    <mat-error
+                    *ngIf="aadharNumber.invalid">
+                    Aadhar Number is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <!-- <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="Enter your salary"
+                    required
+                    name="salaryRange"
+                    type="text"
+                    
+                    [(ngModel)]="user.salaryRange"
+                    ngModel
+                    #salaryRange="ngModel">
+                    
+                    <mat-error
+                    *ngIf="salaryRange.invalid">
+                    salaryRange is required
+                    </mat-error> 
+                </mat-form-field> -->
+
+                <mat-form-field>
+                    <mat-label>Salary Range</mat-label>
+                    <mat-select required  #salaryRange="ngModel" placeholder="Salary Range" name="salaryRange" [(ngModel)]="user.salaryRange" >
+                        <mat-option *ngFor="let c of salary" [value]="c.id">{{c.range}}</mat-option>
+                    </mat-select>
+                    <mat-error
+                    *ngIf="salaryRange.invalid">
+                    salaryRange is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input
+                    matInput
+                    placeholder="Enter Address"
+                    required
+                    name="userAddress"
+                    type="text"
+                    
+                    [(ngModel)]="user.userAddress"
+                    ngModel
+                    #userAddress="ngModel">
+                    
+                    <mat-error
+                    *ngIf="userAddress.invalid">
+                    Address is required
+                    </mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Credit Cards</mat-label>
+                    <mat-select required  #cardType="ngModel" placeholder="Card Type" name="cardType" [(ngModel)]="user.cardType" >
+                        <mat-option *ngFor="let c of credit" [value]="c.name">{{c.name}}</mat-option>
+                    </mat-select>
+                    <mat-error
+                    *ngIf="cardType.invalid">
+                    Credit card type is required
+                    </mat-error> 
+                </mat-form-field>
+  
+              
+            
+              <button
+              [disabled]="userForm.invalid"
+                mat-raised-button
+                color="primary"
+                class="login-button"
+                type="submit"
+                (click)="applyNow()"
+                >
+                Apply
+              </button>
+            </form>
+          </mat-card-content>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+  <app-footer></app-footer>
+  

@@ -13,8 +13,8 @@
                     required
                     type="email"
                     email
-                    name="email"
-                    [(ngModel)]="user1.email"
+                    name="username"
+                    [(ngModel)]="user1.username"
                     ngModel
                     #email="ngModel">
                     <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
