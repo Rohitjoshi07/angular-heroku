@@ -32,7 +32,6 @@ export class ApplyFormComponent implements OnInit {
 
   msg = '';
 
-  public selected: string = '';
   constructor(private service: CreditCardService, private router: Router) { }
 
   ngOnInit(): void {
@@ -45,22 +44,14 @@ export class ApplyFormComponent implements OnInit {
       this.service.doApplyForCreditCard(this.user).subscribe(
         data => {
           console.log(data);
-          // if (data.status == "ok") {
-          //   console.log("...Your Application Successfully Submitted...");
-          // this.service.doRegistration(this.user).subscribe(
-          //   data => {
-          //     console.log("Response Received", data)
-          //     this.msg = "Registration Done Successfully";
-          //     alert("...Your Registration Done Successfully...");
-          //     this.router.navigate(['/dashboard'])
-          //   }
-          // )
-          // }
-          // else {
-          //   this.msg = "User Already Exist. Please Login";
-          // }
+          if (data.status == "ok") {
+            console.log("...Your Application Successfully Submitted...");
+            this.msg = "...Your Application Successfully Submitted...";
+          }
+          else {
+            this.msg = "User Already Exist with same card";
+          }
         },
-
         error => {
           console.log(error);
 
