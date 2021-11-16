@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent, pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent, pathMatch: "full", canActivate: [AuthGuard] },
   { path: "", component: HomeComponent, pathMatch: "full" },
-  { path: "apply", component: ApplyFormComponent, pathMatch: "full", canActivate: [AuthGuard] },
+  { path: "apply/:id", component: ApplyFormComponent, pathMatch: "full", canActivate: [AuthGuard] },
   { path: "app", component: AppComponent, pathMatch: "full" }
 ];
 

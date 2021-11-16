@@ -1,6 +1,6 @@
 <div class="container-fluid credit-page">
     <mat-card class="mat-elevation-z12">
-      <mat-card-title style="text-align:center;">Credit Card Application Form</mat-card-title>
+      <mat-card-title style="text-align:center;"> {{cardName}} Credit Card Application Form</mat-card-title>
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
         <mat-tab label="Credit Card">
           <mat-card-content>
@@ -9,7 +9,7 @@
               <mat-form-field>
                 <input
                   matInput
-                  placeholder="User Name"
+                  placeholder="Fullname"
                   required
                   name="name"
                   [(ngModel)]="user.name"
@@ -18,7 +18,7 @@
                 
                 <mat-error
                   *ngIf="name.invalid">
-                  Username is required
+                  Fullname is required
                 </mat-error>
   
               </mat-form-field>
@@ -154,7 +154,7 @@
                     </mat-error> 
                 </mat-form-field>
 
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <mat-label>Credit Cards</mat-label>
                     <mat-select required  #cardType="ngModel" placeholder="Card Type" name="cardType" [(ngModel)]="user.cardType" >
                         <mat-option *ngFor="let c of credit" [value]="c.name">{{c.name}}</mat-option>
@@ -163,7 +163,7 @@
                     *ngIf="cardType.invalid">
                     Credit card type is required
                     </mat-error> 
-                </mat-form-field>
+                </mat-form-field> -->
   
               
             

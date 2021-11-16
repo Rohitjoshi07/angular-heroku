@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Credit } from '../credit';
 import { Salary } from '../Salary';
 import { CreditCardService } from '../credit-card.service';
@@ -29,17 +29,25 @@ export class ApplyFormComponent implements OnInit {
     { id: 4, range: "above 2 lac" }
   ]
 
-
+  cardName = '';
+  // data="";
   msg = '';
 
-  constructor(private service: CreditCardService, private router: Router) { }
+  constructor(private service: CreditCardService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cardName = this.route.snapshot.params.id;
+    console.log(this.cardName);
+    // this.data=this.cardName;
+
   }
 
   public applyNow() {
-    // console.log(this.user);
-    if ((this.user.name != '' && this.user.email != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '' && this.user.cardType != '') && this.user.name != null && this.user.email != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null && this.user.cardType != null) {
+
+    if ((this.user.name != '' && this.user.email != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '') && this.user.name != null && this.user.email != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null) {
+      this.user.cardType = this.cardName;
+      // console.log(this.user);
+
       this.service.doApplyForCreditCard(this.user).subscribe(
         data => {
           console.log(data);
