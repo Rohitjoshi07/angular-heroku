@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplyFormComponent } from './apply-form/apply-form.component';
+import { AceComponent } from './creditcard/ace/ace.component';
 
 // import { ConfirmEqualValidator } from "./confirm-equal-validator";
 
@@ -44,6 +45,7 @@ import { ApplyFormComponent } from './apply-form/apply-form.component';
     HomeComponent,
     CardComponent,
     ApplyFormComponent,
+    AceComponent,
     // ConfirmEqualValidator
   ],
   imports: [

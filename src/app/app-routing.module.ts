@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { AceComponent } from './creditcard/ace/ace.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full" },
@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent, pathMatch: "full", canActivate: [AuthGuard] },
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "apply/:id", component: ApplyFormComponent, pathMatch: "full", canActivate: [AuthGuard] },
-  { path: "app", component: AppComponent, pathMatch: "full" }
+  { path: "app", component: AppComponent, pathMatch: "full" },
+  {path: "Ace", component: AceComponent , pathMatch: "full", canActivate: [AuthGuard]}
 ];
 
 @NgModule({
