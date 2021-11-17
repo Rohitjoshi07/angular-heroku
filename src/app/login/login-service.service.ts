@@ -12,9 +12,9 @@ export class LoginServiceService {
 
   constructor(private _http: HttpClient) { }
 
-  public doLogin(user: User1): Observable<any> {
-    return this._http.post<any>("https://global-rest-api.herokuapp.com/userAuth/login", user);
-  }
+  // public doLogin(user: User1): Observable<any> {
+  //   return this._http.post<any>("https://global-rest-api.herokuapp.com/userAuth/login", user);
+  // }
 
   generateToken(user: any) {
     return this._http.post(`${this.url}/authenticate`, user);
