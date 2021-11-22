@@ -36,7 +36,7 @@ export class AceComponent implements OnInit {
 
   // a: any = new Ace("", "", "", 0, "");
   // cn: any = this.a.cardNumber;
-  aces: any = [];
+  aces: any;
 
 
   constructor(

@@ -1,8 +1,8 @@
 <br>
 <br>
 <br>
-<div class="container">
-    <!-- <table class="table table-bordered table-striped">
+<!-- <div class="container">
+     <table class="table table-bordered table-striped">
       <thead>
       <tr>
         <th>Creditcard number</th>
@@ -13,16 +13,16 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let ace of aces">
-        <td><span>{{ace.cardnum}}</span></td>
-        <td><span>{{ace.fname}}</span></td>
-        <td><span>{{ace.lname}}</span></td>
-        <td><span>{{ace.cvv}}</span></td>
-        <td><span>{{ace.expiry}}</span></td>
+      <tr >
+        <td><span>{{aces.cardnum}}</span></td>
+        <td><span>{{aces.fname}}</span></td>
+        <td><span>{{aces.lname}}</span></td>
+        <td><span>{{aces.cvv}}</span></td>
+        <td><span>{{aces.expiry}}</span></td>
       </tr>
       </tbody>
-    </table> -->
-  </div>
+    </table>
+  </div> -->
 
 <body>
 <!-- partial:index.partial.html -->
@@ -48,14 +48,14 @@
           <path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path>
         </svg>
       
-        <!-- <div class="card-number" > 
+         <div class="card-number" > 
           <div class="section"><span>{{aces.cardnum.substr(0,4)}}</span></div>
           <div class="section">{{aces.cardnum.substr(4,4)}}</div>
           <div class="section">{{aces.cardnum.substr(8,4)}}</div>
           <div class="section">{{aces.cardnum.substr(12,4)}}</div>
-        </div> -->
-        <!-- <div class="end"><span class="end-text">exp. end:</span><span class="end-date">{{aces.expiry}}</span></div>
-        <div class="card-holder">{{aces.fname}} {{aces.lname}}</div> -->
+        </div> 
+         <div class="end"><span class="end-text">exp. end:</span><span class="end-date">{{aces.expiry}}</span></div>
+        <div class="card-holder">{{aces.fname}} {{aces.lname}}</div> 
         <div class="master">
           <div class="circle master-red"></div>
           <div class="circle master-yellow"></div>
@@ -65,7 +65,7 @@
         <div class="strip-black"></div>
         <div class="ccv">
           <label>ccv</label>
-          <!-- <div>{{aces.cvv}}</div> -->
+           <div>{{aces.cvv}}</div> 
         </div>
         <div class="terms">
           <p>This card is property of Global Bank. Misuse is criminal offence. If found, please return to Global Bank or to the nearest bank with MasterCard logo.</p>
@@ -75,7 +75,7 @@
     </div>
   </div>
 </div>
-<!-- partial -->
+
  
 
 
