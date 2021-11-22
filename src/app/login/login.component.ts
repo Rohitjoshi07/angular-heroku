@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
     if ((this.user1.username != '' && this.user1.password != '') && this.user1.username != null && this.user1.password != null) {
       this.service.generateToken(this.user1).subscribe(
         (data: any) => {
+          console.log(data);
           console.log(data.token);
-          this.service.loginUser(data.token);
+          this.service.loginUser(data.token, this.user1.username);
           window.location.href = "/dashboard"
         },
         error => {

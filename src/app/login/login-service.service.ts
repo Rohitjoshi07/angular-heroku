@@ -20,8 +20,9 @@ export class LoginServiceService {
     return this._http.post(`${this.url}/authenticate`, user);
   }
 
-  loginUser(token: any) {
+  loginUser(token: any, username: any) {
     localStorage.setItem('token', token);
+    localStorage.setItem('username', username)
     return true;
 
   }
@@ -39,6 +40,7 @@ export class LoginServiceService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     return true;
   }
 
