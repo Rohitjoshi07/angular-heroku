@@ -47,24 +47,32 @@ export class ApplyFormComponent implements OnInit {
     if ((this.user.name != '' && this.user.email != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '') && this.user.name != null && this.user.email != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null) {
       this.user.cardType = this.cardName;
       // console.log(this.user);
-
-      this.service.doApplyForCreditCard(this.user).subscribe(
-        data => {
+      this.service.addCreditDetails(this.user).subscribe(
+        (data) => {
           console.log(data);
-          if (data.status == "ok") {
-            console.log("...Your Application Successfully Submitted...");
-            alert("...Your Application Successfully Submitted...");
-            this.msg = "...Your Application Successfully Submitted...";
-          }
-          else {
-            this.msg = "User Already Exist with same card";
-          }
-        },
-        error => {
-          console.log(error);
+          if (data.status == "true") {
+            this.service.doApplyForCreditCard(this.user).subscribe(
+              data => {
+                console.log(data);
+                if (data.status == "ok") {
+                  console.log("...Your Application Successfully Submitted...");
+                  alert("...Your Application Successfully Submitted...");
+                  this.msg = "...Your Application Successfully Submitted...";
+                }
+                else {
+                  this.msg = "User Already Exist with same card";
+                }
+              },
+              error => {
+                console.log(error);
+              }
+            )
 
+          }
         }
+
       )
+
     }
 
     else {

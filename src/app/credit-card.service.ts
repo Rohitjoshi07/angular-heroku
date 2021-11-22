@@ -21,4 +21,16 @@ export class CreditCardService {
       )
     });
   }
+
+  public addCreditDetails(user: User2): Observable<any> {
+    console.log(user);
+    return this.http.post<any>("https://global-rest-api.herokuapp.com/card/generate", user, {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*'
+      }
+      )
+    });
+
+  }
 }
