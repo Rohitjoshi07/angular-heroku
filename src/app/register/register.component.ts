@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   user = new User("", "");
+  repassword: any;
+  status: any;
 
   msg = '';
 
@@ -29,6 +31,7 @@ export class RegisterComponent implements OnInit {
             this.service.doRegistration(this.user).subscribe(
               data => {
                 console.log("Response Received", data)
+                this.status = data.status;
                 this.msg = "Registration Done Successfully";
                 alert("...Your Registration Done Successfully...");
                 this.router.navigate(['/dashboard'])
@@ -37,6 +40,7 @@ export class RegisterComponent implements OnInit {
           }
           else {
             this.msg = "User Already Exist. Please Login";
+            window.location.reload();
           }
         }
       )

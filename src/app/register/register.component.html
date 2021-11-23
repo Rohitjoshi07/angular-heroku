@@ -4,8 +4,8 @@
     <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
       <mat-tab label="Sign Up">
         <mat-card-content>
-          <form #userForm="ngForm" (ngSubmit)="userForm.value">
-            <small class="text-success ml-5" >{{msg}}</small>
+          <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && registerNow()">
+            <small [ngClass]=" status =='OK'?'text-success':'text-danger'" class="ml-5" >{{msg}}</small>
             <mat-form-field>
               <input
                 matInput
@@ -16,85 +16,59 @@
                 [(ngModel)]="user.username"
                 ngModel
                 #email="ngModel">
-                <mat-error *ngIf="email.errors?.required && email.touched">Email is required</mat-error>
-                <mat-error *ngIf="email.errors?.email && email.touched">Email is invalid</mat-error>
-              
+                <mat-error *ngIf="userForm.submitted && email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="userForm.submitted && email.errors?.email">Email is invalid</mat-error>
             </mat-form-field>
-            <!-- <mat-form-field>
-              <input
-                matInput
-                placeholder="User Name"
-                required
-                name="name"
-                [(ngModel)]="user.name"
-                ngModel
-                #username="ngModel">
-              
-              <mat-error
-                *ngIf="username.invalid">
-                Username is required
-              </mat-error>
-
-            </mat-form-field> -->
-            
-            <div ngModelGroup="passwordGroup" mat-error="repassword.touched && !repassword.errors?.required && repassword.invalid"> 
             <mat-form-field>
               <input
                 matInput
-                (input)="repassword.control.updateValueAndValidity()"
                 placeholder="Password"
                 type="password"
                 required
-                minlength="6"
                 name="password"
                 [(ngModel)]="user.password"
                 ngModel
                 #password="ngModel">
                 <mat-error
-                  *ngIf="password.errors?.required">
+                  *ngIf="userForm.submitted && password.errors?.required">
                   Password is required
                 </mat-error>
-                <mat-error
+                <!-- <mat-error
                   *ngIf="password.errors?.minlength">
                   Password must contain atleast 6 characters
-                </mat-error>
+                </mat-error> -->
               
 
             </mat-form-field>
             <mat-form-field>
                 <input
                 matInput
-                appConfirmEqualValidator="password"
                 placeholder="Confirm Password"
                 type="password"
                 required
-                minlength="6"
                 name="repassword"
-                ngModel="user.repassword"
+                pattern="{{user.password}}"
+                ngModel="repassword"
                 ngModel
-                #repassword="ngModel">
+                #cpass="ngModel">
                 <mat-error
-                  *ngIf="repassword.errors?.required">
+                  *ngIf="userForm.submitted && cpass.errors?.required">
                   Re-Enter Confirm Password is required
                 </mat-error>
                 <mat-error
-                  *ngIf="!repassword.errors?.required && repassword.errors?.notEqual">
+                  *ngIf="userForm.submitted && cpass.errors?.pattern ">
                   Password  and Confirm Password not Match
                 </mat-error>
                 
               
             </mat-form-field>
-          </div>
+          <!-- </div> -->
             <button
-
-            [disabled]="userForm.invalid"
               mat-raised-button
               color="primary"
               class="login-button"
               type="submit"
-              (click)="registerNow()"
               >
-              
               Sign Up
             </button>
             <!-- <p>{{user | json }}</p> -->

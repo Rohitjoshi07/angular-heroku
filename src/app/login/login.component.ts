@@ -12,7 +12,7 @@ import { User1 } from '../user1';
 export class LoginComponent implements OnInit {
   user1 = new User1("", "");
   msg = '';
-
+  status: any;
   constructor(private service: LoginServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
           window.location.href = "/dashboard"
         },
         error => {
-          this.msg = "Invalid Credientials, Please Login Again";
+          this.status = "Bad-Request";
+          this.msg = "...Please Login with Valid Credientials...";
           this.router.navigate(['/login']);
         }
       )
@@ -54,7 +55,9 @@ export class LoginComponent implements OnInit {
       // )
     }
     else {
-      this.msg = "All fields are mandatory..."
+      this.status = "Bad-Request";
+      this.msg = "...All fields are mandatory..."
+      window.location.reload();
     }
   }
 

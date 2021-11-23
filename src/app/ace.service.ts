@@ -33,7 +33,6 @@ export class AceService {
         userid: panId
       }
     });
-
   }
 
 

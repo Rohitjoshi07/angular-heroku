@@ -12,7 +12,7 @@ import { User2 } from '../user2';
 })
 export class ApplyFormComponent implements OnInit {
 
-
+  status: any;
   user = new User2("", "", "", "", "", "", "", "", "");
 
   credit: Credit[] = [
@@ -30,6 +30,7 @@ export class ApplyFormComponent implements OnInit {
   ]
 
   cardName = '';
+  candidateEmail: any;
   // data="";
   msg = '';
 
@@ -38,14 +39,16 @@ export class ApplyFormComponent implements OnInit {
   ngOnInit(): void {
     this.cardName = this.route.snapshot.params.id;
     console.log(this.cardName);
+    this.candidateEmail = localStorage.getItem('username');
     // this.data=this.cardName;
 
   }
 
   public applyNow() {
 
-    if ((this.user.name != '' && this.user.email != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '') && this.user.name != null && this.user.email != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null) {
+    if ((this.user.name != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '') && this.user.name != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null) {
       this.user.cardType = this.cardName;
+      this.user.email = this.candidateEmail
       // console.log(this.user);
       this.service.addCreditDetails(this.user).subscribe(
         (data) => {
@@ -55,9 +58,11 @@ export class ApplyFormComponent implements OnInit {
               data => {
                 console.log(data);
                 if (data.status == "ok") {
+                  this.status = data.status;
                   console.log("...Your Application Successfully Submitted...");
                   alert("...Your Application Successfully Submitted...");
                   this.msg = "...Your Application Successfully Submitted...";
+                  this.router.navigate(['/Ace'])
                 }
                 else {
                   this.msg = "User Already Exist with same card";
@@ -67,7 +72,6 @@ export class ApplyFormComponent implements OnInit {
                 console.log(error);
               }
             )
-
           }
         }
 

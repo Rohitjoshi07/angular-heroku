@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- <span><img src=".././assets/img/logo.png" width="180px" height="180px" class="img-fluid" alt="..."></span> -->
     <a *ngIf="!displayDashboard" class="navbar-brand text-white" routerLink="">Global Bank</a>
-    <a *ngIf="displayDashboard" class="navbar-brand text-white">Global Bank</a>
+    <a *ngIf="displayDashboard" class="navbar-brand text-white" routerLink="/dashboard">Global Bank</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

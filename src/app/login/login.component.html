@@ -5,7 +5,7 @@
         <mat-tab label="Login">
             <mat-card-content>
               <form #userForm="ngForm" (ngSubmit)="userForm.value">
-                <small class="text-success ml-5">{{msg}}</small>
+                <small [ngClass]=" status =='Bad-Request'?'text-danger':'text-success'" class="ml-5">{{msg}}</small>
                 <mat-form-field>
                   <input
                     matInput
