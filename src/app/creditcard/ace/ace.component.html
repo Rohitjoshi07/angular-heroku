@@ -26,8 +26,7 @@
 
 <body>
 <!-- partial:index.partial.html -->
-
-<div class="center">
+<div class="center" *ngIf="(aces|keyvalue)?.length ; else elseBlock">
   <div class="card"  >
     <div class="flip">
       <div class="front">
@@ -78,6 +77,15 @@
     <h1>Card Not Available</h1>
   </div> -->
 </div>
+
+<ng-template #elseBlock>
+  <br>
+  <br>
+  <div class="optional">
+    <h1 style="text-align: center; color: rgb(4, 4, 34);"> ...No Credit Card in your Account...</h1>
+  </div>
+
+</ng-template>
 
  
 
