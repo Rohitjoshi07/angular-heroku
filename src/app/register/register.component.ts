@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,15 +33,32 @@ export class RegisterComponent implements OnInit {
               data => {
                 console.log("Response Received", data)
                 this.status = data.status;
-                this.msg = "Registration Done Successfully";
-                alert("...Your Registration Done Successfully...");
-                this.router.navigate(['/dashboard'])
+                // this.msg = "Registration Done Successfully";
+                Swal.fire({
+                  title: "Your Registration Done",
+                  icon: "success"
+                }).then((isOkay) => {
+                  if (isOkay) {
+                    setTimeout("window.location.href = '/dashboard';", 500)
+                  }
+                })
+                // alert("...Your Registration Done Successfully...");
+                // this.router.navigate(['/dashboard'])
               }
             )
           }
           else {
-            this.msg = "User Already Exist. Please Login";
-            window.location.reload();
+            Swal.fire({
+              title: "User Already Exist. Please Login",
+              icon: "error"
+            }).then((isOkay) => {
+              if (isOkay) {
+                window.setTimeout(function () { location.reload() }, 500)
+              }
+            })
+            // this.msg = "User Already Exist. Please Login";
+            // window.location.reload();
+
           }
         }
       )
@@ -64,8 +82,15 @@ export class RegisterComponent implements OnInit {
     }
 
     else {
-      this.msg = "All fields are mandatory...";
+      Swal.fire({
+        title: "All fields are mandatory...",
+        icon: "error"
+      }).then((isOkay) => {
+        if (isOkay) {
+          window.setTimeout(function () { location.reload() }, 500)
+        }
+      })
+      // this.msg = "All fields are mandatory...";
     }
   }
-
 }

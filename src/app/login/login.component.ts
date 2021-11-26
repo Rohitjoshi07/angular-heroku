@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginServiceService } from './login-service.service';
 import { User1 } from '../user1';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,12 +27,31 @@ export class LoginComponent implements OnInit {
           console.log(data);
           console.log(data.token);
           this.service.loginUser(data.token, this.user1.username);
-          window.location.href = "/dashboard"
+          // window.location.href = "/dashboard"
+          setTimeout("window.location.href = '/dashboard';", 500)
+          // Swal.fire({
+          //   title: "Login Success",
+          //   icon: "success"
+          // }).then((isOkay) => {
+          //   if (isOkay) {
+          //     setTimeout("window.location.href = '/dashboard';", 500)
+          //   }
+          // })
+          // setTimeout("window.location.href = '/dashboard';", 2000)
         },
         error => {
           this.status = "Bad-Request";
-          this.msg = "...Please Login with Valid Credientials...";
-          this.router.navigate(['/login']);
+          Swal.fire({
+            title: "Please Login with Valid Credientials.",
+            icon: "error"
+          }).then((isOkay) => {
+            if (isOkay) {
+              window.setTimeout(function () { location.reload() }, 500)
+            }
+          })
+          // this.msg = "...Please Login with Valid Credientials...";
+          // this.router.navigate(['/login']);
+          // window.setTimeout(function () { location.reload() }, 2000)
         }
       )
       // this.service.doLogin(this.user1).subscribe(
@@ -55,9 +74,17 @@ export class LoginComponent implements OnInit {
       // )
     }
     else {
-      this.status = "Bad-Request";
-      this.msg = "...All fields are mandatory..."
-      window.location.reload();
+      // this.status = "Bad-Request";
+      // this.msg = "...All fields are mandatory..."
+      // window.location.reload();
+      Swal.fire({
+        title: "All fields are mandatory...",
+        icon: "error"
+      }).then((isOkay) => {
+        if (isOkay) {
+          window.setTimeout(function () { location.reload() }, 500)
+        }
+      })
     }
   }
 

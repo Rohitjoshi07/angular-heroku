@@ -8,12 +8,17 @@ import { AceService } from 'src/app/ace.service';
 })
 export class AceComponent implements OnInit {
   aces: any;
+  isShow: boolean = true
   constructor(
     private service: AceService,
   ) { }
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  isToggle() {
+    this.isShow = !this.isShow
   }
   getData() {
     this.service.getUserName().subscribe(

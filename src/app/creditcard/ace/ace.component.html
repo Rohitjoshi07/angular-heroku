@@ -1,31 +1,7 @@
 <br>
 <br>
 <br>
-<!-- <div class="container">
-     <table class="table table-bordered table-striped">
-      <thead>
-      <tr>
-        <th>Creditcard number</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>cvv</th>
-        <th>expiry</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr >
-        <td><span>{{aces.cardnum}}</span></td>
-        <td><span>{{aces.fname}}</span></td>
-        <td><span>{{aces.lname}}</span></td>
-        <td><span>{{aces.cvv}}</span></td>
-        <td><span>{{aces.expiry}}</span></td>
-      </tr>
-      </tbody>
-    </table>
-  </div> -->
-
 <body>
-<!-- partial:index.partial.html -->
 <div class="center" *ngIf="(aces|keyvalue)?.length ; else elseBlock">
   <div class="card"  >
     <div class="flip">
@@ -63,8 +39,9 @@
       <div class="back">
         <div class="strip-black"></div>
         <div class="ccv">
-          <label>ccv</label>
-           <div>{{aces.cvv}}</div> 
+          <label><button (click)="isToggle()">ccv</button></label>
+           <div *ngIf="!isShow">{{aces.cvv}}</div> 
+           <div *ngIf="isShow">***</div> 
         </div>
         <div class="terms">
           <p>This card is property of Global Bank. Misuse is criminal offence. If found, please return to Global Bank or to the nearest bank with MasterCard logo.</p>
@@ -73,18 +50,13 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="aces == {}" >
-    <h1>Card Not Available</h1>
-  </div> -->
 </div>
-
 <ng-template #elseBlock>
   <br>
   <br>
   <div class="optional">
     <h1 style="color: blue"> ...No Credit Card in your Account...</h1>
   </div>
-
 </ng-template>
 
  

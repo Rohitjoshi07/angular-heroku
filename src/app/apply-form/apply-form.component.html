@@ -1,12 +1,12 @@
 <div class="container-fluid credit-page">
     <mat-card class="mat-elevation-z12">
       <mat-card-title style="text-align:center;"> {{cardName}} Credit Card Application Form</mat-card-title>
-      <small [ngClass]="status =='true'?'text-success':'text-danger'" class="ml-5"class="ml-5" >{{msg}}</small>
+      <!-- <small [ngClass]="status =='true'?'text-success':'text-danger'" class="ml-5"class="ml-5" >{{msg}}</small> -->
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
         <mat-tab label="Credit Card">
           <mat-card-content>
             <form #userForm="ngForm" (ngSubmit)="userForm.value">
-             
+          
               <mat-form-field>
                 <input
                   matInput

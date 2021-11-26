@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { LoginServiceService } from './login/login-service.service';
 
 @Component({
@@ -17,7 +18,33 @@ export class AppComponent implements OnInit {
   }
 
   logoutUser() {
-    this.loginSer.logout();
-    location.reload()
+    Swal.fire({
+      title: "Are you Sure",
+      text: "This will be Logged Out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true
+    }).then((isOkay) => {
+      if (isOkay.isConfirmed) {
+        this.loginSer.logout();
+        // location.reload()
+        window.setTimeout(function () { location.reload() }, 500)
+      }
+      else if (isOkay.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'You will Continue..',
+          'error'
+        ).then((isError) => {
+          if (isError) {
+            window.setTimeout(function () { location.reload() }, 100);
+          }
+        })
+
+      }
+    })
+
   }
 }
