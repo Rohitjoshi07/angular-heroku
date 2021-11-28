@@ -2,14 +2,20 @@
 <br>
 <br>
 <body>
-<div class="center" *ngIf="(aces|keyvalue)?.length ; else elseBlock">
-  <div class="card"  >
+<br>
+<br>
+<br>
+<br>
+<div  class = "container" *ngIf="cards.length !=0 ; else elseBlock">
+  <div class = "row">
+    <div class = "col-sm-6" style="padding: 40px;" *ngFor = "let card of cards">
+  <div class ="center" class="card" >
     <div class="flip">
       <div class="front">
         <div class="strip-bottom"></div>
         <div class="strip-top"></div>
         
-        <div class="investor">Global Bank <br> ACE CREDIT CARD</div>
+        <div class="investor">Global Bank <br> {{card.cardType}} CREDIT CARD</div>
         <div class="chip">
           <div class="chip-line"></div>
           <div class="chip-line"></div>
@@ -24,13 +30,13 @@
         </svg>
       
          <div class="card-number"> 
-          <div class="section"><span>{{aces.cardnum.substr(0,4)}}</span></div>
-          <div class="section">{{aces.cardnum.substr(4,4)}}</div>
-          <div class="section">{{aces.cardnum.substr(8,4)}}</div>
-          <div class="section">{{aces.cardnum.substr(12,4)}}</div>
+          <div class="section"><span>{{card.cardnum.substr(0,4)}}</span></div>
+          <div class="section">{{card.cardnum.substr(4,4)}}</div>
+          <div class="section">{{card.cardnum.substr(8,4)}}</div>
+          <div class="section">{{card.cardnum.substr(12,4)}}</div>
         </div> 
-         <div class="end"><span class="end-text">exp. end:</span><span class="end-date">{{aces.expiry}}</span></div>
-        <div class="card-holder">{{aces.fname}} {{aces.lname}}</div> 
+         <div class="end"><span class="end-text">exp. end:</span><span class="end-date">{{card.expiry}}</span></div>
+        <div class="card-holder">{{card.fname}} {{card.lname}}</div> 
         <div class="master">
           <div class="circle master-red"></div>
           <div class="circle master-yellow"></div>
@@ -40,7 +46,7 @@
         <div class="strip-black"></div>
         <div class="ccv">
           <label><button (click)="isToggle()">ccv</button></label>
-           <div *ngIf="!isShow">{{aces.cvv}}</div> 
+           <div *ngIf="!isShow">{{card.cvv}}</div> 
            <div *ngIf="isShow">***</div> 
         </div>
         <div class="terms">
@@ -51,15 +57,16 @@
     </div>
   </div>
 </div>
+</div>
+</div>
 <ng-template #elseBlock>
   <br>
   <br>
   <div class="optional">
-    <h1 style="color: blue"> ...No Credit Card in your Account...</h1>
+    <h1 style="color: rgb(34, 192, 20)"> Feels Lonely here , Apply for Credit Card...</h1>
   </div>
 </ng-template>
 
- 
 
 
 
