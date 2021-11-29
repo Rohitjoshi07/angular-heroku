@@ -30,7 +30,7 @@ export class AceService {
       }
       ),
       params: {
-        userid: panId
+        id: panId
       }
     });
   }

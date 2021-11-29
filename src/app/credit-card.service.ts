@@ -11,8 +11,6 @@ export class CreditCardService {
   constructor(private http: HttpClient) { }
 
   public doApplyForCreditCard(user: User2): Observable<any> {
-
-
     return this.http.post<any>("https://global-rest-api.herokuapp.com/user", user, {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + localStorage.getItem("token"),

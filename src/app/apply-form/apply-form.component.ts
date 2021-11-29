@@ -61,8 +61,8 @@ export class ApplyFormComponent implements OnInit {
           this.user.email = this.candidateEmail
           // console.log(this.user);
           this.service.addCreditDetails(this.user).subscribe(
-            (data) => {
-              console.log(data);
+            (data: any) => {
+              console.log("Add credit card-", data);
               if (data.status == "false") {
                 Swal.fire({
                   title: data.message,
