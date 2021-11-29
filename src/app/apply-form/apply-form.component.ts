@@ -33,7 +33,7 @@ export class ApplyFormComponent implements OnInit {
   cardName = '';
   candidateEmail: any;
   // data="";
-  // msg = '';
+  // m = '';
 
   constructor(private service: CreditCardService, private router: Router, private route: ActivatedRoute) { }
 
@@ -63,6 +63,17 @@ export class ApplyFormComponent implements OnInit {
           this.service.addCreditDetails(this.user).subscribe(
             (data) => {
               console.log(data);
+              if (data.status == "false") {
+                Swal.fire({
+                  title: data.message,
+                  icon: "error"
+                }).then((isOkay) => {
+                  if (isOkay) {
+                    window.setTimeout(function () { location.reload() }, 500)
+                  }
+                })
+              }
+
               if (data.status == "true") {
                 this.service.doApplyForCreditCard(this.user).subscribe(
                   data => {

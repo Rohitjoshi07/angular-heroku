@@ -29,9 +29,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CardComponent } from './card/card.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplyFormComponent } from './apply-form/apply-form.component';
 import { AceComponent } from './creditcard/ace/ace.component';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NetworkInterceptor } from './network.interceptor';
 
 // import { ConfirmEqualValidator } from "./confirm-equal-validator";
 
@@ -65,11 +68,16 @@ import { AceComponent } from './creditcard/ace/ace.component';
     MatExpansionModule,
     CdkAccordionModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
     // FlexLayoutModule
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

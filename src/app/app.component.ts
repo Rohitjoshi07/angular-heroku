@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { LoadingService } from './loading.service';
 import { LoginServiceService } from './login/login-service.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { LoginServiceService } from './login/login-service.service';
 export class AppComponent implements OnInit {
   title = 'Demo';
   public displayDashboard = false;
-  constructor(private loginSer: LoginServiceService) {
+  loading$ = this.loader.loading$;
+  constructor(private loginSer: LoginServiceService, private loader: LoadingService) {
   }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit {
       if (isOkay.isConfirmed) {
         this.loginSer.logout();
         // location.reload()
+        this.loader.hide();
         window.setTimeout(function () { location.reload() }, 500)
       }
       else if (isOkay.dismiss === Swal.DismissReason.cancel) {

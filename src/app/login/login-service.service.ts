@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User1 } from '../user1';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { LoadingService } from '../loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LoginServiceService {
 
   url = "https://global-rest-api.herokuapp.com";
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private loader: LoadingService) { }
 
   // public doLogin(user: User1): Observable<any> {
   //   return this._http.post<any>("https://global-rest-api.herokuapp.com/userAuth/login", user);
@@ -41,6 +42,7 @@ export class LoginServiceService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    this.loader.show();
     return true;
   }
 
