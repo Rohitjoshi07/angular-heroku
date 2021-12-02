@@ -59,7 +59,7 @@ export class ApplyFormComponent implements OnInit {
         if ((this.user.name != '' && this.user.dob != '' && this.user.mobileNumber != '' && this.user.panNumber != '' && this.user.aadharNumber != '' && this.user.salaryRange != '' && this.user.userAddress != '') && this.user.name != null && this.user.dob != null && this.user.mobileNumber != null && this.user.panNumber != null && this.user.aadharNumber != null && this.user.salaryRange != null && this.user.userAddress != null) {
           this.user.cardType = this.cardName;
           this.user.email = this.candidateEmail
-          // console.log(this.user);
+          console.log(this.user);
           this.service.addCreditDetails(this.user).subscribe(
             (data: any) => {
               console.log("Add credit card-", data);
@@ -73,11 +73,10 @@ export class ApplyFormComponent implements OnInit {
                   }
                 })
               }
-
               if (data.status == "true") {
                 this.service.doApplyForCreditCard(this.user).subscribe(
                   data => {
-                    console.log(data);
+                    console.log("Add credit card-", data);
                     if (data.status == "ok") {
                       this.status = data.status;
                       console.log("...Your Application Successfully Submitted...");
