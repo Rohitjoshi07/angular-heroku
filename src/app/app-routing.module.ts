@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AceComponent } from './creditcard/ace/ace.component';
+import { CompareComponent } from './compare/compare.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full" },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "apply/:id", component: ApplyFormComponent, pathMatch: "full", canActivate: [AuthGuard] },
   { path: "app", component: AppComponent, pathMatch: "full" },
-  {path: "Ace", component: AceComponent , pathMatch: "full", canActivate: [AuthGuard]}
+  { path: "Ace", component: AceComponent, pathMatch: "full", canActivate: [AuthGuard] },
+  { path: "compare", component: CompareComponent, pathMatch: "full" }
 ];
 
 @NgModule({

@@ -35,6 +35,7 @@ import { AceComponent } from './creditcard/ace/ace.component';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './network.interceptor';
+import { CompareComponent } from './compare/compare.component';
 
 // import { ConfirmEqualValidator } from "./confirm-equal-validator";
 
@@ -49,6 +50,7 @@ import { NetworkInterceptor } from './network.interceptor';
     CardComponent,
     ApplyFormComponent,
     AceComponent,
+    CompareComponent,
     // ConfirmEqualValidator
   ],
   imports: [

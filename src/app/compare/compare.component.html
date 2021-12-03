@@ -1,0 +1,151 @@
+<br><br>
+<div class="mt-5 mx-5">
+    <div class="row">
+        <div class="col">
+            <!DOCTYPE html>
+            <html>
+
+            <head>
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                    h2 {
+                        text-align: center;
+                    }
+
+                    table,
+                    th,
+                    td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+
+                    table {
+
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        width: 100%;
+                        border: 1px solid #ddd;
+                    }
+
+                    th,
+                    td {
+                        text-align: center;
+                        padding: 16px;
+                    }
+
+                    i{
+                        font-weight: bold;
+                    }
+
+                    th:first-child,
+                    td:first-child {
+                        text-align: left;
+                    }
+
+                    tr:nth-child(even) {
+                        background-color: #f2f2f2
+                    }
+
+                    .fa-check {
+                        color: green;
+                    }
+
+                    .fa-remove {
+                        color: red;
+                    }
+                </style>
+            </head>
+
+            <body>
+
+                <h2 style="margin: 50px; font-family: 'Elephant', Elephant, monospace; font-size: 50px; font-weight: bold;" >Comparison of Credit Cards</h2>
+
+                <table>
+                    <tr>
+                        <th  style="width:30%;   background-color:  #be0032; color: white; font-size: 25px; font-weight: bolder; text-align: center;">Features</th>
+                        <th style="color: aquamarine; background-color: #be0032;">
+                            <SELECT style="text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection1($event)">
+                                <option value="none" selected disabled>Select an Option</option>
+                                <option *ngFor="let card of cardsData1;" value="{{card}}">{{card}}</option>
+                            </SELECT>
+                        </th>
+                        <th  style="color: aquamarine; background-color: #be0032; ">
+                            <SELECT  style="text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection2($event)">
+                                <option value="none" selected disabled>Select an Option</option>
+                                <option *ngFor="let card of cardsData2;" value="{{card}}">{{card}}</option>
+                            </SELECT>
+                        </th>
+                        <th  style="color: aquamarine; background-color: #be0032;">
+                            <SELECT style="text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection3($event)">
+                                <option value="none" selected disabled>Select an Option</option>
+                                <option *ngFor="let card of cardsData3;" value="{{card}}">{{card}}</option>
+                            </SELECT>
+                        </th>
+                    </tr>
+                    <tr *ngIf="check()" class="bg-light">
+                        <td style="font-weight: bold; font-size:20px;">Charges</td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{price1}}</i></td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{price2}}</i></td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{price3}}</i></td>
+                    </tr>
+                    <tr *ngIf="check()" class ="bg-dark" style="background-color: #808080 ; font-size:20px;">
+                        <td style="font-weight: bold;  color: white; font-size:20px;">Interest</td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{interest1}}</i></td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{interest2}}</i></td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{interest3}}</i></td>
+                    </tr>
+
+                    <tr *ngIf="check()" class="bg-light">
+                        <td style="font-weight: bold; font-size:20px;">RepaymentDays</td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{repaymentday1}}</i></td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{repaymentday2}}</i></td>
+                        <td style="font-weight: bold; font-size:20px;"><i class="fa">{{repaymentday3}}</i></td>
+                    </tr>
+                    <tr *ngIf="check()" class ="bg-dark" style="background-color:  #0000; font-size:20px;">
+                        <td style="font-weight: bold;  color: white; font-size:20px;">Features</td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{feature1}}</i></td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{feature2}}</i></td>
+                        <td style="font-weight: bold;  color: white; font-size:20px;"><i class="fa">{{feature3}}</i></td>
+                    </tr>
+
+
+                </table>
+
+            </body>
+
+            </html>
+        </div>
+    </div>
+</div>
+<div class="foot">
+<app-footer></app-footer>
+</div>
+
+<!-- 
+<tr>
+    <td>Charges
+    <td><i class="fa fa-remove"></i></td>
+    <td><i class="fa fa-check"></i></td>
+</tr>
+<tr>
+    <td>Feature2
+    <td><i class="fa fa-check"></i></td>
+    <td><i class="fa fa-check"></i></td>
+</tr>
+<tr>
+    <td>feature 3</td>
+    <td><i class="fa fa-check"></i></td>
+    <td><i class="fa fa-check"></i></td>
+</tr>
+<tr>
+    <td>Feature4</td>
+    <td><i class="fa fa-remove"></i></td>
+    <td><i class="fa fa-check"></i></td>
+</tr>
+<tr>
+    <td>Sample text</td>
+    <td><i class="fa fa-check"></i></td>
+    <td><i class="fa fa-check"></i></td>
+</tr> -->
