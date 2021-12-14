@@ -64,20 +64,20 @@
 
                 <table>
                     <tr>
-                        <th  style="width:30%;   background-color: #927a80; color: rgb(16, 2, 34); font-size: 25px; font-weight: bolder; text-align: center;">Features</th>
-                        <th style="color: aquamarine; background-color: #927a80;">
+                        <th  style="width:30%;   background-color: #948387; color: rgb(16, 2, 34); font-size: 25px; font-weight: bolder; text-align: center;">Features</th>
+                        <th style="color: aquamarine; background-color: #948387;">
                             <SELECT style="background-color: #1c022e;color: white; text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection1($event)">
                                 <option value="none" selected disabled>Select an Option</option>
                                 <option *ngFor="let card of cardsData1;" value="{{card}}">{{card}}</option>
                             </SELECT>
                         </th>
-                        <th  style="color: aquamarine; background-color: #927a80; ">
+                        <th  style="color: aquamarine; background-color: #948387; ">
                             <SELECT  style="background-color: #1c022e;color: white; text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection2($event)">
                                 <option value="none" selected disabled>Select an Option</option>
                                 <option *ngFor="let card of cardsData2;" value="{{card}}">{{card}}</option>
                             </SELECT>
                         </th>
-                        <th  style="color: aquamarine; background-color: #927a80;">
+                        <th  style="color: aquamarine; background-color: #948387;">
                             <SELECT style="background-color: #1c022e;color: white; text-align: center; padding: 5px; font-weight: bold;" NAME="Card" id="Card" (change)="selection3($event)">
                                 <option value="none" selected disabled>Select an Option</option>
                                 <option *ngFor="let card of cardsData3;" value="{{card}}">{{card}}</option>
